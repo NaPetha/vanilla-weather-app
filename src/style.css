@@ -1,5 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: bisque;
 }
 
 h1 {
@@ -36,6 +37,7 @@ li::first-letter {
   padding: 20px;
   border: 1px solid #dadde1;
   border-radius: 5px;
+  background-color: rgb(112, 236, 245);
 }
 .weather-temperature img {
   margin-right: 5px;
