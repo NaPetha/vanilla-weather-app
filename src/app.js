@@ -51,11 +51,11 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-    console.log(coordinates);
-    let apiKey = "eoa3532bf935a7aaa252tf62407ee2bd";
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}&units=metric`;
-    console.log(apiUrl);
-    axios.get(apiUrl).then(displayForecast);
+  console.log(coordinates);
+  let apiKey = "eoa3532bf935a7aaa252tf62407ee2bd";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
@@ -67,19 +67,19 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-  cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  humidityElement.innerHTML = response.data.main.humidity;
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/${response.data.weather[0].icon}.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+  iconElement.setAttribute("alt", response.data.condition.description);
 
-  getForecast(response.data.coord);
+  getForecast(response.data.coordinates);
 }
 function search(city) {
   let apiKey = "eoa3532bf935a7aaa252tf62407ee2bd";
@@ -122,4 +122,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Johannesburg");
-
