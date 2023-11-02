@@ -77,3 +77,9 @@ li::first-letter {
 .weather-forecast-temperatures {
   font-size: 13px;
 }
+.weather-forecast-icon {
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto;
+}
