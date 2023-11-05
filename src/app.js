@@ -39,13 +39,11 @@ function displayForecast(response) {
       forecastHTML +
       `
         <div class="col-2">
-            <div class="weather-forecast-date">${formatDay(day.time)}</div>
-              <div>  
+            <div class="weather-forecast-date">${formatDay(day.time)}</div>  
                    <img
                     src="${
                       day.condition.icon_url
                     }" class="weather-forecast-icon" />
-              </div>
                 <div class="weather-forecast-temperatures">
               <span class="weather-forecast-temperature-max"> <strong>${Math.round(
                 day.temperature.maximum
